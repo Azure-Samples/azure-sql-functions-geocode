@@ -1,0 +1,9 @@
+CREATE TABLE [dbo].[Workorders]
+(
+  [Id] UNIQUEIDENTIFIER NOT NULL DEFAULT (NEWID()) PRIMARY KEY,
+  [Summary] NVARCHAR(200) NOT NULL,
+  [Description] NVARCHAR(MAX) NOT NULL,
+  [Location] NVARCHAR(300) NOT NULL,
+  [Latitude] DECIMAL(18,6) NULL,
+  [Longitude] DECIMAL(18,6) NULL
+)

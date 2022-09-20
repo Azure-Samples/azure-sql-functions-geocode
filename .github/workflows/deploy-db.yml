@@ -1,0 +1,27 @@
+name: Build and deploy SQL to Azure
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout GitHub Action'
+        uses: actions/checkout@v2
+
+      # deploy the sql project
+      - uses: azure/sql-action@v2
+        with:
+          connection-string: ${{ secrets.AZURE_SQL }} # the Azure SQL connection string
+          arguments: '/v:WorkorderFunctionEndpoint="https://${{ secrets.AZURE_FUNCTIONAPP_NAME }}.azurewebsites.net/api/WorkorderEnteredOrchestration_HttpStart"'
+          project-file: './workorder-database/workorder-database.sqlproj' # the SQLproj file
+
+      # store the dacpac as a release artifact
+      - name: upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: workorder-database.dacpac
+          path: ./workorder-database/bin/Debug/workorder-database.dacpac

@@ -27,10 +27,10 @@ namespace Azure.Samples
         [FunctionName("WorkorderEntered_Analyze")]
         public static async Task<string> ProcessLocation([ActivityTrigger] string sqlInput,
             // SQL output binding to write coordinates back to the database
-            [Sql("dbo.Workorders", ConnectionStringSetting = "SqlConnectionString")] IAsyncCollector<WorkorderEntered> workorders,
+            [Sql("dbo.Workorders", ConnectionStringSetting = "SqlConnectionString")] IAsyncCollector<Workorder> workorders,
             ILogger log)
         {
-            WorkorderEntered input = JsonConvert.DeserializeObject<WorkorderEntered>(sqlInput);
+            Workorder input = JsonConvert.DeserializeObject<Workorder>(sqlInput);
             log.LogInformation($"Geocoding input of {sqlInput}");
 
             if (input.Location is not null && input.Location != "") {
@@ -71,7 +71,7 @@ namespace Azure.Samples
             return starter.CreateCheckStatusResponse(req, instanceId);
         }
 
-        private static async Task<GeoCoordinates> GetLocation(string location)
+        public static async Task<GeoCoordinates> GetLocation(string location)
         {
             GeoCoordinates newCoordinates = new GeoCoordinates();
 
@@ -94,8 +94,8 @@ namespace Azure.Samples
         public double Latitude { get; set; }
         public double Longitude { get; set; }
     }
-    public class WorkorderEntered {
-        public Guid Id { get; set; }
+    public class Workorder {
+        public Guid? Id { get; set; }
         public string Summary { get; set; }
         public string Description { get; set; }
         public string Location { get; set; }

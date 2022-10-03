@@ -8,7 +8,7 @@ BEGIN
     DECLARE @WORKORDER_ID UNIQUEIDENTIFIER
 
     SELECT @WORKORDER_ID = [Id]
-    FROM inserted WHERE Latitude IS NULL
+    FROM inserted WHERE Latitude IS NULL AND Location != ''
 
     IF @WORKORDER_ID IS NOT NULL
     BEGIN

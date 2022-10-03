@@ -27,7 +27,7 @@ The geocoding sample for Azure SQL leverages the `sp_invoke_external_rest_endpoi
 1. From the **Database Projects** pane, right-click the **workorder-database** project and select **Publish**. Follow the dialogs to **Publish to new Azure SQL Database emulator**, which will deploy the project's schema to a container.  The emulator will be available at `localhost,1433` with the username `sa` and password you specified.
 2. Copy the file [functions/default.local.settings.json](./functions/default.local.settings.json) to `functions/local.settings.json` and update the `SqlConnectionString` value to point to the Azure SQL Database emulator.
 3. Update the local Functions runtime settings with the **Azure Functions: Set AzureWebJobsStorage** command, which will link an Azure Storage account to the local Functions runtime for storing the state and queues of the durable function.
-4. Create an [Azure Maps account](https://learn.microsoft.com/en-us/azure/azure-maps/quick-demo-map-app#create-an-azure-maps-account) and obtain the primary key to the clipboard. Add the primary key to `functions/local.settings.json` as the setting `AzureMapKey`.
+4. Create an [Azure Maps account](https://learn.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-azure-maps-account) and locate the [primary key](https://learn.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account). Add the primary key to `functions/local.settings.json` as the setting `AzureMapKey`.
 
 *`sp_invoke_external_rest_endpoint` is not yet publicly available, to test the geocoding function you will need to send a POST request to the function's endpoint. A sample request is available in [testing.http](testing.http).*
 

@@ -1,0 +1,34 @@
+# list all workorders
+GET http://localhost:7071/api/ListWorkorders
+
+
+###
+
+# display a single workorder
+GET http://localhost:7071/api/Workorder/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+
+
+###
+
+# add a workorder to the database
+POST http://localhost:7071/api/Workorder
+
+
+{
+    "Summary": "This is a summary",
+    "Description": "This is a much longer description",
+    "Location": "Seattle, WA"
+}
+
+###
+
+#simulate the stored procedure sp_invoke_external_rest_endpoint
+POST http://localhost:7071/api/WorkorderEnteredOrchestration_HttpStart
+Content-Type: application/json
+
+{
+    "Id": xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx,
+    "Summary": "This is a summary",
+    "Description": "This is a much longer description",
+    "Location": "Seattle, WA"
+}

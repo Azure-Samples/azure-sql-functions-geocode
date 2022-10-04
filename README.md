@@ -1,4 +1,4 @@
-# Project Name
+# Azure SQL geocoding with Azure Functions
 
 The geocoding sample for Azure SQL leverages the `sp_invoke_external_rest_endpoint` stored procedure in Azure SQL Database and Azure SQL bindings for Azure Functions to geocode addresses after they are inserted in a table.  In scenarios where the application inserting data to Azure SQL Database cannot be modified, it may be necessary to trigger a process after the data is inserted. 
 

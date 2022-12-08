@@ -1,6 +1,44 @@
+---
+page_type: sample
+languages:
+- tsql
+- sql
+- csharp
+products:
+- azure
+- azure-sql-database
+- dotnet-core
+- azure-functions
+description: "Geocoding sample for Azure SQL DB with Azure Functions"
+urlFragment: "azure-sql-functions-geocode"
+---
+
 # Azure SQL geocoding with Azure Functions
 
+
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+
+<!-- 
+Guidelines on README format: https://review.docs.microsoft.com/help/onboard/admin/samples/concepts/readme-template?branch=master
+
+Guidance on onboarding samples to docs.microsoft.com/samples: https://review.docs.microsoft.com/help/onboard/admin/samples/process/onboarding?branch=master
+
+Taxonomies for products and languages: https://review.docs.microsoft.com/new-hope/information-architecture/metadata/taxonomies?branch=master
+-->
+
 The geocoding sample for Azure SQL leverages the `sp_invoke_external_rest_endpoint` stored procedure in Azure SQL Database and Azure SQL bindings for Azure Functions to geocode addresses after they are inserted in a table.  In scenarios where the application inserting data to Azure SQL Database cannot be modified, it may be necessary to trigger a process after the data is inserted. 
+
+
+## Contents
+
+| File/folder       | Description                                |
+|-------------------|--------------------------------------------|
+| `.github/workflows`       | GitHub Actions workflows for the sample to deploy the Functions and the SQL project. |
+| `architecture.png`       | Architecture diagram for the sample. |
+| `data-api-builder`       | Data API Builder component for the sample. |
+| `functions`       | C# Azure Functions for the sample. |
+| `testing.http`       | Sample HTTP requests for testing the sample. |
+| `workorder-database`       | SQL Database project for the sample. |
 
 
 ## Getting Started
